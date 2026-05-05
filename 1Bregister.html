@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+
+<h2>User Registration</h2>
+
+<form id="regForm">
+    Name: <input type="text" id="name" required><br><br>
+    Email: <input type="email" id="email" required><br><br>
+    Password: <input type="password" id="pass" required><br><br>
+    <button type="submit">Register</button>
+</form>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let user = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        pass: document.getElementById("pass").value
+    };
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    users.push(user);
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Registered Successfully!");
+
+    window.location.href = "1Bdisplay.html";
+});
+</script>
+
+</body>
+</html>
